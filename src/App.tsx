@@ -1,10 +1,13 @@
 import AddButton from './components/AddButton'
 import CardNote from './components/CardNote'
+import  WrapperGeneral from './components/WrapperGeneral'
 import Sidebar from './components/Sidebar'
+import {RigthColumn} from './components/RigthColumn'
 
 const App = () => {
   return (
     <>
+    <WrapperGeneral>
       <Sidebar>
         <AddButton onClick={() => alert('se me aclickeado')}/>
         <CardNote
@@ -22,6 +25,10 @@ const App = () => {
           selected={false}
         />
       </Sidebar>
+      <RigthColumn>
+      <h1>hola soy un titulo</h1>
+      </RigthColumn>
+    </WrapperGeneral>
     </>
   )
 }
