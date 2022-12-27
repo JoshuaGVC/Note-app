@@ -3,6 +3,8 @@ import CardNote from './components/CardNote'
 import  WrapperGeneral from './components/WrapperGeneral'
 import Sidebar from './components/Sidebar'
 import {RigthColumn} from './components/RigthColumn'
+import TitleEdit from './components/TitleEdit'
+import Paragraph from './components/Paragraph'
 
 const App = () => {
   return (
@@ -26,7 +28,8 @@ const App = () => {
         />
       </Sidebar>
       <RigthColumn>
-      <h1>hola soy un titulo</h1>
+      <TitleEdit/>
+      <Paragraph/> 
       </RigthColumn>
     </WrapperGeneral>
     </>

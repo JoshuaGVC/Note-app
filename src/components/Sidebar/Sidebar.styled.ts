@@ -5,4 +5,5 @@ export const Wrapper = styled.div`
     width: 330px;
     border-right: 2px solid #DDDDDD;
     min-height: 100vh;
+    flex-shrink: 0;
 `
