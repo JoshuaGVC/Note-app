@@ -2,33 +2,35 @@ import { FormEvent, useState } from "react";
 
 import { Title } from "./Title.styled";
 
+
 const TitleEdit = () => {
-  const [phantonContent, setPhantonContent] = useState("")
-  const [content, setContent] = useState("Una simple nota");
+  const defaultText = "Titulo de la nota...";
+  const [content, setContent] = useState(defaultText);
+  const [textColor, setTextColor] = useState(true)
 
   const handlerOnBlur = (event: FormEvent<HTMLHeadingElement>) => {
-    if(content === ""){
-      setContent("Una simple nota")
-    }else{
-      const value = (event.target as HTMLHeadingElement).textContent;
-      console.log(value)
-      setContent(value as string);
+    const text = (event.target as HTMLHeadingElement).textContent;
+    if (!text) {
+      setTextColor(true)
+      setContent(defaultText);
+      return;
     }
+    setContent(text as string);
   };
 
   const handlerOnFocus = () => {
-    if(content === "Una simple nota"){
+    if (content === "Titulo de la nota...") {
       setContent("");
     }
   };
 
-  
-
   return (
     <Title
+      onInput={()=>setTextColor(false)}
       onFocus={handlerOnFocus}
       onBlur={handlerOnBlur}
       suppressContentEditableWarning={true}
+      defalutText={textColor}
       contentEditable
     >
       {content}
