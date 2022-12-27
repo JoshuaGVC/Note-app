@@ -22,13 +22,10 @@ const TitleEdit = () => {
     }
   };
 
-  const handlerOnInput = ()=>{
-    setPhantonContent("Una simple nota")
-  }
+  
 
   return (
     <Title
-      onInput={handlerOnInput}
       onFocus={handlerOnFocus}
       onBlur={handlerOnBlur}
       suppressContentEditableWarning={true}
