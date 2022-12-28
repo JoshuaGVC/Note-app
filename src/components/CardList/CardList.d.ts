@@ -5,3 +5,8 @@ export interface ICardNote {
     date: string;
     onClick?: () => void;
 }
+
+export interface ICardList{
+    items: ICardNote[];
+    actionNote: (index: number)=> void;
+}

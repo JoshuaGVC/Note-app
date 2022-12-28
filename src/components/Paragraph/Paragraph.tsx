@@ -1,31 +1,41 @@
-import { FocusEventHandler, FormEvent, useState } from 'react';
-import { Wrapper } from './Paragraph.styled'
+import { FormEvent, useState } from "react";
+import { Wrapper } from "./Paragraph.styled";
 
 const Paragraph = () => {
-  const [defaultText, setDefaultText] = useState("escriba su nota aqui...");
-  const [colorText, setColorText] = useState(true)  
+  const texto = "escriba su nota aqui..."
+  const [defaultText, setDefaultText] = useState(texto);
+  const [colorText, setColorText] = useState(true);
 
   const handlerOnBlur = (event: FormEvent<HTMLParagraphElement>) => {
-    const text = (event.target as HTMLParagraphElement).textContent;
-    if (!text) {
-      setColorText(true)
-      setDefaultText("escriba su nota aqui...")
+    const html = (event.target as HTMLParagraphElement).innerHTML;
+    const contenido = (event.target as HTMLParagraphElement).textContent;
+
+    if (!html || contenido === "") {
+      setColorText(true);
+      setDefaultText(texto);
       return;
     }
-
-    setDefaultText(text as string)
+    setDefaultText(html as string);
   };
 
   const handlerOnFocus = () => {
-    if (defaultText === "escriba su nota aqui...") {
-      setDefaultText("")
+    if (defaultText === texto) {
+      setDefaultText("");
     }
   };
 
-
   return (
-    <Wrapper defaulTextColor={colorText} onInput={() => setColorText(false)} onFocus={handlerOnFocus} onBlur={handlerOnBlur} contentEditable suppressContentEditableWarning={true}>{defaultText}</Wrapper>
-  )
-}
+    <Wrapper
+      defaulTextColor={colorText}
+      onInput={() => setColorText(false)}
+      onFocus={handlerOnFocus}
+      onBlur={handlerOnBlur}
+      dangerouslySetInnerHTML={{__html : defaultText}}
+      suppressContentEditableWarning={true}
+      contentEditable
+    >
+    </Wrapper>
+  );
+};
 
-export default Paragraph
+export default Paragraph;

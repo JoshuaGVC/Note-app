@@ -4,7 +4,7 @@ import { Title } from "./Title.styled";
 
 
 const TitleEdit = () => {
-  const defaultText = "Titulo de la nota...";
+  const defaultText = "Una simple nota";
   const [content, setContent] = useState(defaultText);
   const [textColor, setTextColor] = useState(true)
 
@@ -19,7 +19,7 @@ const TitleEdit = () => {
   };
 
   const handlerOnFocus = () => {
-    if (content === "Titulo de la nota...") {
+    if (content === "Una simple nota") {
       setContent("");
     }
   };
