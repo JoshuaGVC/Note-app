@@ -1,7 +1,11 @@
 import styled from 'styled-components';
-export const Wrapper = styled.p`
+interface IParagraph{
+    defaulTextColor : boolean;
+}
+export const Wrapper = styled.p<IParagraph>`
     font-family: 'Open Sans';
     font-weight: 400;
     font-size: 20px;
     line-height: 27px;
+    color: ${props => props.defaulTextColor ? "#d7d7d7" : "#000" }
 `
