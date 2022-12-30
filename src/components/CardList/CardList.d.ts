@@ -1,12 +1,6 @@
-export interface ICardNote {
-    selected?: boolean;
-    title: string;
-    description: string;
-    date: string;
-    onClick?: () => void;
-}
+import { ICard } from "../Card";
 
 export interface ICardList{
-    items: ICardNote[];
+    items: ICard[];
     actionNote: (index: number)=> void;
 }

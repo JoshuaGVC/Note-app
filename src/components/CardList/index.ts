@@ -1,3 +1,3 @@
-import CardNote from './CardList';
-export type { ICardNote } from './CardList.d';
-export default CardNote;
+import CardList from './CardList';
+export type { ICardList } from './CardList.d';
+export default CardList;

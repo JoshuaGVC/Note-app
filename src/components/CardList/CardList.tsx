@@ -1,22 +1,21 @@
 import { FC } from 'react'
-import { Card, Date, Paragraph, Title } from './CardNote.styled'
-import { ICardList, ICardNote } from './CardList.d';
+import { ICardList } from './CardList.d';
+import Card, { ICard } from '../Card';
 
 const CardList: FC<ICardList> = ({ items, actionNote }) => {
   
   return (
     <ul>
       {
-        items.map((item: ICardNote, index:number) => (
+        items.map(({ title, paragraph, date, selected, onClick }: ICard, index: number) => (
           <Card
             key={`item-${index}`}
-            selected={item.selected}
-            onClick={item.onClick}
-            >
-            <Title>{item.title}{index}</Title>
-            <Paragraph as="p">{item.description.substring(0, 63)}...</Paragraph>
-            <Date>{item.date}</Date>
-          </Card>          
+            title={title}
+            paragraph={paragraph}
+            date={date}
+            selected={selected !== undefined ? selected : false}
+            onClick={ onClick !== undefined ? onClick : () => {} }
+          />        
         ))         
       }
     </ul>

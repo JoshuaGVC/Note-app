@@ -1,10 +1,11 @@
 import {describe, expect, test, vi} from 'vitest';
 import {render, screen} from '@testing-library/react';
-import CardList from './CardList';
+import userEvent from '@testing-library/user-event'
+import CardNote from './CardNote';
 
 describe('<CardNote/>', () => {
     test('Exists button', async () => {
-        render(<CardList items={[]} actionNote={()=>{}}/>);
+        render(<CardNote title=''  date='' description=''/>);
         const button = screen.queryByText(/Add Note/i)
         expect(button).toBeInTheDocument();
     })

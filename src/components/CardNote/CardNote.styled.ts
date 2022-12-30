@@ -4,7 +4,7 @@ interface ICard {
     selected?: boolean;
 }
 
-export const Card = styled.li<ICard>`
+export const Card = styled.div<ICard>`
     height: 121px;
     border-radius: 7px;
     background-color: ${props => props.selected ? '#EEEEEE' : '#fff'};
