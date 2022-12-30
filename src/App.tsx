@@ -25,13 +25,17 @@ const App = () => {
     setCardsList(addedNote)
   }
 
+  const selectNote = (index:number)=>{
+    
+  }
+
   return (
     <>
     <WrapperGeneral>
       <Sidebar>
         <AddButton onClick={addCard}/>
         <CardList
-          actionNote={()=>{}}
+          actionNote={()=>{selectNote}}
           items={cardsList}
         />
       </Sidebar>
