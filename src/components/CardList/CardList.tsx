@@ -7,15 +7,16 @@ const CardList: FC<ICardList> = ({ items, actionNote }) => {
     <ul>
       {items.map(
         (
-          { title, paragraph, date, selected, onClick }: ICard,
+          { title, paragraph, date, selected,id }: ICard,
           index) => (
           <Card
+            id={id}
             key={`item-${index}`}
             title={title}
             paragraph={paragraph}
             date={date}
             selected={selected !== undefined ? selected : false}
-            onClick={onClick !== undefined ? onClick : () => {}}
+            onClick={actionNote}
           />
         )
       )}

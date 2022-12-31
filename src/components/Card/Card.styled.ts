@@ -21,7 +21,7 @@ export const Card = styled.li<ICard>`
     }
 
     & > * {
-        font-weight: 600 !important;
+        font-weight: ${props => props.selected ? '600 !important' : '400'};
     }
 `
 
