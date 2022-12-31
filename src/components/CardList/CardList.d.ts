@@ -1,4 +1,4 @@
-import { ICard } from "../Card";
+import { ICard } from '../Card/Card';
 
 export interface ICardList{
     items: ICard[];

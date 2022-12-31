@@ -1,15 +1,14 @@
 import AddButton from './components/AddButton'
-import CardList from './components/CardList'
+import CardList, { ICardList } from './components/CardList'
 import  WrapperGeneral from './components/WrapperGeneral'
 import Sidebar from './components/Sidebar'
 import {RigthColumn} from './components/RigthColumn'
 import TitleEdit from './components/TitleEdit'
 import Paragraph from './components/Paragraph'
 import { useState } from 'react'
-import { ICard } from './components/Card'
+import {ICardApp} from './App.d'
 
-interface ICardApp extends Omit<ICard, 'onClick'> {
-}
+
 
 const App = () => {
   const [cardsList, setCardsList] = useState<ICardApp[]>([])
@@ -29,8 +28,8 @@ const App = () => {
     setCardsList(addedNote)
   }
 
-  const selectNote = (index:number)=>{
-    
+  const selectNote = ()=>{
+    alert("me hice click")
   }
 
   return (
@@ -39,8 +38,9 @@ const App = () => {
       <Sidebar>
         <AddButton onClick={addCard}/>
         <CardList
-          actionNote={()=>{selectNote}}
+          actionNote={selectNote}
           items={cardsList}
+          
         />
       </Sidebar>
 
