@@ -7,7 +7,7 @@ const CardList: FC<ICardList> = ({ items, actionNote }) => {
     <ul>
       {items.map(
         (
-          { title, paragraph, date, selected,id }: ICard,
+          { title, paragraph, date, selected, id }: ICard,
           index) => (
           <Card
             id={id}
