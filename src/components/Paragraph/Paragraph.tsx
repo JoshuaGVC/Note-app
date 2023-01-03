@@ -2,7 +2,7 @@ import { FC, FormEvent, useState } from "react";
 import { Wrapper } from "./Paragraph.styled";
 import { IParagraph } from "./Paragraph.d";
 
-const Paragraph: FC<IParagraph> = ({ textPragraph }) => {
+const Paragraph: FC<IParagraph> = ({ textPragraph, onBlur }) => {
   const textDefault =
     "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo labore aliquam doloremque exercitationem necessitatibus voluptates ex quia porro iure eius sequi, consequuntur veniam, libero ullam vero iste. Vero, maiores";
   const [defaultText, setDefaultText] = useState(textPragraph);
@@ -18,6 +18,7 @@ const Paragraph: FC<IParagraph> = ({ textPragraph }) => {
       return;
     }
     setDefaultText(html as string);
+    onBlur(textPragraph);
   };
 
   const handlerOnFocus = () => {

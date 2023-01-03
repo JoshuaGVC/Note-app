@@ -3,13 +3,11 @@ import Paragraph from "../Paragraph";
 import TitleEdit from "../TitleEdit";
 import { IRender } from "./RenderNote.d";
 
-const RenderNote: FC<IRender> = ({ render }) => {
-  const title = render.title;
-  const parrafo = render.paragraph;
+const RenderNote: FC<IRender> = ({ title, paragraph, handlerOnBlur }) => {
   return (
     <>
-      <TitleEdit textTitle={title} />
-      <Paragraph textPragraph={parrafo} />
+      <TitleEdit textTitle={title} onBlur={handlerOnBlur} />
+      <Paragraph textPragraph={paragraph} onBlur={handlerOnBlur} />
     </>
   );
 };

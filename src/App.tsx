@@ -73,6 +73,10 @@ const App = () => {
     }
   };
 
+  const itsOnBlur = (data: string) => {
+    console.log(data);
+  };
+
   useEffect(() => {
     let myNote = localStorage.getItem("notes");
     if (myNote !== null) {
@@ -92,7 +96,14 @@ const App = () => {
         <CardList actionNote={onActionCard} items={cardsList} />
       </Sidebar>
       <RigthColumn>
-        {!!cardFount && <RenderNote render={cardFount} />}
+        {!!cardFount && (
+          <RenderNote
+            title={cardFount.title}
+            paragraph={cardFount.paragraph}
+            id={cardFount.id}
+            handlerOnBlur={itsOnBlur}
+          />
+        )}
       </RigthColumn>
     </WrapperGeneral>
   );

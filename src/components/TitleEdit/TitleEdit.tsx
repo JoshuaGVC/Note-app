@@ -2,7 +2,7 @@ import { FC, FormEvent, useState } from "react";
 import { ITitle } from "./Title.d";
 import { Title } from "./Title.styled";
 
-const TitleEdit: FC<ITitle> = ({ textTitle }) => {
+const TitleEdit: FC<ITitle> = ({ textTitle, onBlur }) => {
   const defaultText = "Una simple nota";
   const [content, setContent] = useState(textTitle);
   const [textColor, setTextColor] = useState(true);
@@ -15,6 +15,7 @@ const TitleEdit: FC<ITitle> = ({ textTitle }) => {
       return;
     }
     setContent(text as string);
+    onBlur(text);
   };
 
   const handlerOnFocus = () => {
