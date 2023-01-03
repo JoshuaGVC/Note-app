@@ -2,9 +2,10 @@ import { FC, FormEvent, useState } from "react";
 import { Wrapper } from "./Paragraph.styled";
 import { IParagraph } from "./Paragraph.d";
 
-const Paragraph: FC<IParagraph> = ({ textTitle }) => {
-  const texto = textTitle;
-  const [defaultText, setDefaultText] = useState(texto);
+const Paragraph: FC<IParagraph> = ({ textPragraph }) => {
+  const textDefault =
+    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo labore aliquam doloremque exercitationem necessitatibus voluptates ex quia porro iure eius sequi, consequuntur veniam, libero ullam vero iste. Vero, maiores";
+  const [defaultText, setDefaultText] = useState(textPragraph);
   const [colorText, setColorText] = useState(true);
 
   const handlerOnBlur = (event: FormEvent<HTMLParagraphElement>) => {
@@ -13,14 +14,14 @@ const Paragraph: FC<IParagraph> = ({ textTitle }) => {
 
     if (!html || contenido === "") {
       setColorText(true);
-      setDefaultText(texto);
+      setDefaultText(textDefault);
       return;
     }
     setDefaultText(html as string);
   };
 
   const handlerOnFocus = () => {
-    if (defaultText === texto) {
+    if (defaultText === textDefault) {
       setDefaultText("");
     }
   };

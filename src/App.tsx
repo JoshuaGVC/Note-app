@@ -25,7 +25,7 @@ const App = () => {
       id: crypto.randomUUID(),
       title: "Una simple nota",
       paragraph:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo labore aliquam doloremque exercitationem necessitatibus voluptates ex quia porro iure eius sequi, consequuntur veniam, libero ullam vero iste. Vero, maiores.",
+        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo labore aliquam doloremque exercitationem necessitatibus voluptates ex quia porro iure eius sequi, consequuntur veniam, libero ullam vero iste. Vero, maiores",
       date: moment().format("dddd, Do of MMMM  YYYY, h:mm:ss a"),
       selected: true,
     };
@@ -49,7 +49,7 @@ const App = () => {
 
   const renderContentCard = () => {
     const cardInTrue = cardsList.find((item) => item.selected);
-    return setCardFount(cardInTrue);
+    setCardFount(cardInTrue);
   };
 
   const selectNote = (id: string) => {
@@ -62,7 +62,6 @@ const App = () => {
     });
 
     setCardsList(cardSelected);
-    renderContentCard();
   };
 
   const onActionCard = (id: string, action: TAction) => {
@@ -83,6 +82,7 @@ const App = () => {
 
   useEffect(() => {
     saveInLocal(cardsList);
+    renderContentCard();
   }, [cardsList]);
 
   return (
@@ -92,7 +92,7 @@ const App = () => {
         <CardList actionNote={onActionCard} items={cardsList} />
       </Sidebar>
       <RigthColumn>
-        <RenderNote render={() => {}} />
+        {!!cardFount && <RenderNote render={cardFount} />}
       </RigthColumn>
     </WrapperGeneral>
   );

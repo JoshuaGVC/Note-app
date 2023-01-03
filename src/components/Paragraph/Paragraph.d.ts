@@ -1,3 +1,3 @@
 export interface IParagraph {
-  textPragrph: string;
+  textPragraph: string;
 }
