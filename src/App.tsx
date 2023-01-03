@@ -3,15 +3,15 @@ import CardList from "./components/CardList";
 import WrapperGeneral from "./components/WrapperGeneral";
 import Sidebar from "./components/Sidebar";
 import { RigthColumn } from "./components/RigthColumn";
-import TitleEdit from "./components/TitleEdit";
-import Paragraph from "./components/Paragraph";
 import { useEffect, useState } from "react";
 import { ICardApp } from "./App.d";
 import moment from "moment";
 import { TAction } from "./components/Card/Card.d";
+import RenderNote from "./components/RenderNote";
 
 const App = () => {
   const [cardsList, setCardsList] = useState<ICardApp[]>([]);
+  const [cardFount, setCardFount] = useState<ICardApp>();
 
   const addCard = () => {
     const prevList = cardsList.map((item) => {
@@ -47,16 +47,22 @@ const App = () => {
     localStorage.setItem("notes", toSave);
   };
 
+  const renderContentCard = () => {
+    const cardInTrue = cardsList.find((item) => item.selected);
+    return setCardFount(cardInTrue);
+  };
+
   const selectNote = (id: string) => {
     const newCardArray = [...cardsList];
     const cardSelected = newCardArray.map((item) => {
       return {
         ...item,
-        selected: item.id === id ? true : false,
+        selected: item.id === id,
       };
     });
 
     setCardsList(cardSelected);
+    renderContentCard();
   };
 
   const onActionCard = (id: string, action: TAction) => {
@@ -69,17 +75,15 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (cardsList.length > 0) {
-      saveInLocal(cardsList);
-    }
-  }, [cardsList]);
-
-  useEffect(() => {
     let myNote = localStorage.getItem("notes");
     if (myNote !== null) {
       setCardsList(JSON.parse(myNote));
     }
   }, []);
+
+  useEffect(() => {
+    saveInLocal(cardsList);
+  }, [cardsList]);
 
   return (
     <WrapperGeneral>
@@ -88,8 +92,7 @@ const App = () => {
         <CardList actionNote={onActionCard} items={cardsList} />
       </Sidebar>
       <RigthColumn>
-        <TitleEdit />
-        <Paragraph />
+        <RenderNote render={() => {}} />
       </RigthColumn>
     </WrapperGeneral>
   );
