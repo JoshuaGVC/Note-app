@@ -18,7 +18,7 @@ const Paragraph: FC<IParagraph> = ({ textPragraph, onBlur }) => {
       return;
     }
     setDefaultText(html as string);
-    onBlur(textPragraph);
+    onBlur(html);
   };
 
   const handlerOnFocus = () => {

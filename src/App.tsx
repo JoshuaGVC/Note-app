@@ -98,6 +98,7 @@ const App = () => {
       <RigthColumn>
         {!!cardFount && (
           <RenderNote
+            insertDate={() => {}}
             title={cardFount.title}
             paragraph={cardFount.paragraph}
             id={cardFount.id}

@@ -3,7 +3,15 @@ import Paragraph from "../Paragraph";
 import TitleEdit from "../TitleEdit";
 import { IRender } from "./RenderNote.d";
 
-const RenderNote: FC<IRender> = ({ title, paragraph, handlerOnBlur }) => {
+const RenderNote: FC<IRender> = ({
+  title,
+  paragraph,
+  handlerOnBlur,
+  insertDate,
+}) => {
+  const addDiference = handlerOnBlur(title);
+  console.log(addDiference);
+
   return (
     <>
       <TitleEdit textTitle={title} onBlur={handlerOnBlur} />
