@@ -1,4 +1,4 @@
-import { FC, FormEvent, useState } from "react";
+import { FC, FormEvent, useEffect, useState } from "react";
 import { ITitle } from "./Title.d";
 import { Title } from "./Title.styled";
 
@@ -9,6 +9,9 @@ const TitleEdit: FC<ITitle> = ({ textTitle, onBlur }) => {
 
   const handlerOnBlur = (event: FormEvent<HTMLHeadingElement>) => {
     const text = (event.target as HTMLHeadingElement).textContent;
+    if (defaultText !== text) {
+      setTextColor(false);
+    }
     if (!text) {
       setTextColor(true);
       setContent(defaultText);
@@ -24,13 +27,21 @@ const TitleEdit: FC<ITitle> = ({ textTitle, onBlur }) => {
     }
   };
 
+  useEffect(() => {
+    setContent(textTitle);
+  }, [textTitle, textColor]);
+
+  useEffect(() => {
+    console.log("cambie");
+  }, [textColor]);
+
   return (
     <Title
+      defalutText={textColor}
       onInput={() => setTextColor(false)}
       onFocus={handlerOnFocus}
       onBlur={handlerOnBlur}
       suppressContentEditableWarning={true}
-      defalutText={textColor}
       contentEditable
     >
       {content}

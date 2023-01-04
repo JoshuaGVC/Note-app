@@ -8,10 +8,11 @@ import { ICardApp } from "./App.d";
 import moment from "moment";
 import { TAction } from "./components/Card/Card.d";
 import RenderNote from "./components/RenderNote";
+import { TType } from "./components/RenderNote/RenderNote.d";
 
 const App = () => {
   const [cardsList, setCardsList] = useState<ICardApp[]>([]);
-  const [cardFount, setCardFount] = useState<ICardApp>();
+  const [cardFound, setCardFound] = useState<ICardApp>();
 
   const addCard = () => {
     const prevList = cardsList.map((item) => {
@@ -49,12 +50,11 @@ const App = () => {
 
   const renderContentCard = () => {
     const cardInTrue = cardsList.find((item) => item.selected);
-    setCardFount(cardInTrue);
+    setCardFound(cardInTrue);
   };
 
   const selectNote = (id: string) => {
-    const newCardArray = [...cardsList];
-    const cardSelected = newCardArray.map((item) => {
+    const cardSelected = cardsList.map((item) => {
       return {
         ...item,
         selected: item.id === id,
@@ -73,8 +73,30 @@ const App = () => {
     }
   };
 
-  const itsOnBlur = (data: string) => {
-    console.log(data);
+  const dataChange = (data: ICardApp, action: TType) => {
+    const myCard = cardFound as ICardApp;
+    const cardEditable = {
+      ...myCard,
+      [action]: data[action],
+      date: moment().format("dddd, Do of MMMM  YYYY, h:mm:ss a"),
+    };
+    const cardId = myCard.id;
+    const cardIndex = cardsList.findIndex((item) => item.id === cardId);
+    const arrayModify = [...cardsList];
+    arrayModify.splice(cardIndex, 1, cardEditable);
+    setCardsList(arrayModify);
+  };
+
+  const itsOnBlur = (data: string, type: TType) => {
+    const myCard = cardFound as ICardApp;
+    if (type === "title") {
+      const editTitle = { ...myCard, title: data };
+      dataChange(editTitle, type);
+    }
+    if (type === "paragraph") {
+      const editParagraph = { ...myCard, paragraph: data };
+      dataChange(editParagraph, type);
+    }
   };
 
   useEffect(() => {
@@ -96,13 +118,12 @@ const App = () => {
         <CardList actionNote={onActionCard} items={cardsList} />
       </Sidebar>
       <RigthColumn>
-        {!!cardFount && (
+        {!!cardFound && (
           <RenderNote
-            insertDate={() => {}}
-            title={cardFount.title}
-            paragraph={cardFount.paragraph}
-            id={cardFount.id}
-            handlerOnBlur={itsOnBlur}
+            title={cardFound.title}
+            paragraph={cardFound.paragraph}
+            id={cardFound.id}
+            onBlur={itsOnBlur}
           />
         )}
       </RigthColumn>

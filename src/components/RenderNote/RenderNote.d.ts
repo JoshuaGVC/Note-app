@@ -1,9 +1,8 @@
 import { ICardApp } from "./../../App.d";
-type TAction = "title" | "paragraph";
+type TType = "title" | "paragraph";
 
 export interface IRender extends Pick<ICardApp, "id" | "title" | "paragraph"> {
-  handlerOnBlur: (data: string) => void;
-  insertDate: (data: string, action: TAction) => void;
+  onBlur: (data: string, action: TType) => void;
 }
 
 // -agregar card al apretar el boton "add" - listo.

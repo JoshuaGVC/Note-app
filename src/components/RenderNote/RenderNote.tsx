@@ -3,19 +3,19 @@ import Paragraph from "../Paragraph";
 import TitleEdit from "../TitleEdit";
 import { IRender } from "./RenderNote.d";
 
-const RenderNote: FC<IRender> = ({
-  title,
-  paragraph,
-  handlerOnBlur,
-  insertDate,
-}) => {
-  const addDiference = handlerOnBlur(title);
-  console.log(addDiference);
+const RenderNote: FC<IRender> = ({ title, paragraph, onBlur }) => {
+  const onBlurTitle = (data: string) => {
+    onBlur(data, "title");
+  };
+
+  const onBlurParagraph = (data: string) => {
+    onBlur(data, "paragraph");
+  };
 
   return (
     <>
-      <TitleEdit textTitle={title} onBlur={handlerOnBlur} />
-      <Paragraph textPragraph={paragraph} onBlur={handlerOnBlur} />
+      <TitleEdit textTitle={title} onBlur={onBlurTitle} />
+      <Paragraph textPragraph={paragraph} onBlur={onBlurParagraph} />
     </>
   );
 };
