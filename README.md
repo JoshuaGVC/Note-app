@@ -2,6 +2,8 @@
 
 ![noteapp](./src/assets/img_note-app.png)
 
+[link demo](https://joshuagvc.github.io/note-app)
+
 La "Note-app" es una aplicacion web muy util que te permite guardar notas simples y putuales para que puedas recordar ciertos datos que desees y tenerlas siempre a la mano para la ocasion. se almacenara en el lado izquierdo en un sidebar donde podras accder a cualquier nota que hayas añadido y con un doble click sobre el card seleccionado, podras eliminarlo por si accidentalemente agregas una nota
 
 ## ¿Como usar "Note-app"?
