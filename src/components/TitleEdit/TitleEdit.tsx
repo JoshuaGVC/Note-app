@@ -1,9 +1,9 @@
-import { FC, FormEvent, useEffect, useState } from "react";
-import { ITitle } from "./Title.d";
-import { Title } from "./Title.styled";
+import { FC, FormEvent, useEffect, useState } from 'react';
+import { ITitle } from './Title.d';
+import { Title } from './Title.styled';
 
 const TitleEdit: FC<ITitle> = ({ textTitle, onBlur }) => {
-  const defaultText = "Una simple nota";
+  const defaultText = 'Una simple nota';
   const [content, setContent] = useState(textTitle);
   const [textColor, setTextColor] = useState(true);
 
@@ -12,28 +12,27 @@ const TitleEdit: FC<ITitle> = ({ textTitle, onBlur }) => {
     if (defaultText !== text) {
       setTextColor(false);
     }
+
     if (!text) {
       setTextColor(true);
       setContent(defaultText);
+      onBlur(defaultText);
       return;
     }
-    setContent(text as string);
     onBlur(text);
+    setContent(text as string);
   };
 
   const handlerOnFocus = () => {
     if (content === defaultText) {
-      setContent("");
+      setContent('');
     }
   };
 
   useEffect(() => {
     setContent(textTitle);
-  }, [textTitle, textColor]);
-
-  useEffect(() => {
-    console.log("cambie");
-  }, [textColor]);
+    setTextColor(defaultText === textTitle);
+  }, [textTitle]);
 
   return (
     <Title

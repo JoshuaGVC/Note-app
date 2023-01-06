@@ -1,10 +1,10 @@
-import { FC, FormEvent, useEffect, useState } from "react";
-import { Wrapper } from "./Paragraph.styled";
-import { IParagraph } from "./Paragraph.d";
+import { FC, FormEvent, useEffect, useState } from 'react';
+import { Wrapper } from './Paragraph.styled';
+import { IParagraph } from './Paragraph.d';
 
 const Paragraph: FC<IParagraph> = ({ textPragraph, onBlur }) => {
   const textDefault =
-    "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo labore aliquam doloremque exercitationem necessitatibus voluptates ex quia porro iure eius sequi, consequuntur veniam, libero ullam vero iste. Vero, maiores";
+    'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo labore aliquam doloremque exercitationem necessitatibus voluptates ex quia porro iure eius sequi, consequuntur veniam, libero ullam vero iste. Vero, maiores';
   const [noteContent, setNoteContent] = useState(textPragraph);
   const [colorText, setColorText] = useState(true);
 
@@ -12,7 +12,7 @@ const Paragraph: FC<IParagraph> = ({ textPragraph, onBlur }) => {
     const html = (event.target as HTMLParagraphElement).innerHTML;
     const contenido = (event.target as HTMLParagraphElement).textContent;
 
-    if (contenido === "") {
+    if (contenido === '') {
       setColorText(true);
       setNoteContent(textDefault);
       onBlur(textDefault);
@@ -24,7 +24,7 @@ const Paragraph: FC<IParagraph> = ({ textPragraph, onBlur }) => {
 
   const handlerOnFocus = () => {
     if (noteContent === textDefault) {
-      setNoteContent("");
+      setNoteContent('');
     }
   };
 
@@ -38,11 +38,8 @@ const Paragraph: FC<IParagraph> = ({ textPragraph, onBlur }) => {
   }, []);
 
   useEffect(() => {
-    if (textPragraph === textDefault) {
-      setNoteContent(textDefault);
-    } else {
-      setNoteContent(textPragraph);
-    }
+    setColorText(textPragraph === textDefault);
+    setNoteContent(textPragraph);
   }, [textPragraph]);
 
   return (

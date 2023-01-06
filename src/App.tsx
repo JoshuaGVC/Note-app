@@ -1,15 +1,16 @@
-import AddButton from "./components/AddButton";
-import CardList from "./components/CardList";
-import WrapperGeneral from "./components/WrapperGeneral";
-import Sidebar from "./components/Sidebar";
-import { RigthColumn } from "./components/RigthColumn";
-import { useEffect, useState } from "react";
-import { ICardApp } from "./App.d";
-import moment from "moment";
-import { TAction } from "./components/Card/Card.d";
-import RenderNote from "./components/RenderNote";
-import { TType } from "./components/RenderNote/RenderNote.d";
+import AddButton from './components/AddButton';
+import CardList from './components/CardList';
+import WrapperGeneral from './components/WrapperGeneral';
+import Sidebar from './components/Sidebar';
+import { RigthColumn } from './components/RigthColumn';
+import { useEffect, useState } from 'react';
+import { ICardApp } from './App.d';
+import moment from 'moment';
+import { TAction } from './components/Card/Card.d';
+import RenderNote from './components/RenderNote';
+import { TType } from './components/RenderNote/RenderNote.d';
 
+const dateNow = Date.now();
 const App = () => {
   const [cardsList, setCardsList] = useState<ICardApp[]>([]);
   const [cardFound, setCardFound] = useState<ICardApp>();
@@ -18,34 +19,40 @@ const App = () => {
     const prevList = cardsList.map((item) => {
       return {
         ...item,
-        selected: false,
+        selected: false
       };
     });
 
     const newCard = {
       id: crypto.randomUUID(),
-      title: "Una simple nota",
+      title: 'Una simple nota',
       paragraph:
-        "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo labore aliquam doloremque exercitationem necessitatibus voluptates ex quia porro iure eius sequi, consequuntur veniam, libero ullam vero iste. Vero, maiores",
-      date: moment().format("dddd, Do of MMMM  YYYY, h:mm:ss a"),
-      selected: true,
+        'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo labore aliquam doloremque exercitationem necessitatibus voluptates ex quia porro iure eius sequi, consequuntur veniam, libero ullam vero iste. Vero, maiores',
+      date: dateNow,
+      //  moment().format('dddd, Do of MMMM  YYYY, h:mm:ss a'),
+      selected: true
     };
 
     setCardsList([newCard, ...prevList]);
   };
 
+  const orderNotes = (list: ICardApp[]) => {
+    const notesOrder = list.sort((a, b) => (b.date as number) - (a.date as number));
+    return notesOrder;
+  };
+
   const deleteNote = (id: string) => {
-    const isConfirmed = confirm("¿Seguro que quieres borrar esta nota?");
+    const isConfirmed = confirm('¿Seguro que quieres borrar esta nota?');
     if (isConfirmed) {
       const myNotes = [...cardsList];
       const newsNotes = myNotes.filter((item) => item.id !== id);
-      setCardsList(newsNotes);
+      setCardsList(orderNotes(newsNotes));
     }
   };
 
   const saveInLocal = (list: ICardApp[]) => {
     const toSave = JSON.stringify(list);
-    localStorage.setItem("notes", toSave);
+    localStorage.setItem('notes', toSave);
   };
 
   const renderContentCard = () => {
@@ -57,18 +64,18 @@ const App = () => {
     const cardSelected = cardsList.map((item) => {
       return {
         ...item,
-        selected: item.id === id,
+        selected: item.id === id
       };
     });
 
-    setCardsList(cardSelected);
+    setCardsList(orderNotes(cardSelected));
   };
 
   const onActionCard = (id: string, action: TAction) => {
-    if (action === "seleccionar") {
+    if (action === 'seleccionar') {
       selectNote(id);
     }
-    if (action === "borrar") {
+    if (action === 'borrar') {
       deleteNote(id);
     }
   };
@@ -78,29 +85,33 @@ const App = () => {
     const cardEditable = {
       ...myCard,
       [action]: data[action],
-      date: moment().format("dddd, Do of MMMM  YYYY, h:mm:ss a"),
+      date: Date.now()
     };
     const cardId = myCard.id;
     const cardIndex = cardsList.findIndex((item) => item.id === cardId);
     const arrayModify = [...cardsList];
     arrayModify.splice(cardIndex, 1, cardEditable);
-    setCardsList(arrayModify);
+    setCardsList(orderNotes(arrayModify));
   };
 
   const itsOnBlur = (data: string, type: TType) => {
     const myCard = cardFound as ICardApp;
-    if (type === "title") {
+    if (type === 'title') {
       const editTitle = { ...myCard, title: data };
-      dataChange(editTitle, type);
+      if (data !== cardFound?.title) {
+        dataChange(editTitle, type);
+      }
     }
-    if (type === "paragraph") {
+    if (type === 'paragraph') {
       const editParagraph = { ...myCard, paragraph: data };
-      dataChange(editParagraph, type);
+      if (data !== cardFound?.paragraph) {
+        dataChange(editParagraph, type);
+      }
     }
   };
 
   useEffect(() => {
-    let myNote = localStorage.getItem("notes");
+    let myNote = localStorage.getItem('notes');
     if (myNote !== null) {
       setCardsList(JSON.parse(myNote));
     }
