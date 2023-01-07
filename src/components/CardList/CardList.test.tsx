@@ -18,7 +18,6 @@ describe('<CardNote/>', () => {
   test('Exists button', async () => {
     const handleClick = vi.fn();
     render(<CardList items={noteList} actionNote={handleClick} />);
-    screen.debug();
     const cardFond = screen.queryByText(noteList[0].title);
     await userEvent.click(cardFond as HTMLElement);
     expect(handleClick).toBeCalledWith(noteList[0].id, 'seleccionar');

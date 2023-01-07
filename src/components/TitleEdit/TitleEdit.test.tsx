@@ -12,7 +12,7 @@ describe('<TitleEdit/>', () => {
     expect(title).toBeInTheDocument();
   });
 
-  test('should find the text when the textcontent is done', async () => {
+  test('should change the text when you enter a different text than the default text', async () => {
     const titleText = 'un texto';
     render(<TitleEdit textTitle={titleText} onBlur={() => {}}></TitleEdit>);
     const title = screen.queryByText(titleText);
@@ -20,7 +20,7 @@ describe('<TitleEdit/>', () => {
     expect(title).toHaveTextContent('este es otro texto');
   });
 
-  test('should change the textContent when you click outside the element', async () => {
+  test('should executed the function when click outside the element', async () => {
     const handlerOnBlur = vi.fn();
     render(<TitleEdit textTitle={titleText} onBlur={handlerOnBlur}></TitleEdit>);
     const title = screen.queryByText(titleText);

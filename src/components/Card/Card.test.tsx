@@ -18,9 +18,8 @@ describe('<Card/> ', () => {
         onClick={() => {}}
       ></Card>
     );
-    screen.debug();
     const title = screen.queryByText(titleText);
-    const paragraph = screen.queryByText(`${paragraphText}...`);
+    const paragraph = screen.queryByText(`${paragraphText.substring(55, 0)}...`);
 
     expect(title).toBeInTheDocument();
     expect(paragraph).toBeInTheDocument();
