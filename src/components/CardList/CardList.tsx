@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { ICardList } from './CardList.d';
 import Card, { ICard } from '../Card';
+import { Satinizar } from '../../utils/Satinizar';
+import { ICardApp } from '../../App.d';
 
 const CardList: FC<ICardList> = ({ items, actionNote }) => {
   return (
@@ -10,7 +12,7 @@ const CardList: FC<ICardList> = ({ items, actionNote }) => {
           id={id}
           key={`item-${index}`}
           title={title}
-          paragraph={paragraph}
+          paragraph={Satinizar(paragraph) as string}
           date={date}
           selected={selected}
           onClick={actionNote}

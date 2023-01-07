@@ -26,11 +26,8 @@ describe('<Card/> ', () => {
     const title = screen.queryByText(titleText);
     const paragraph = screen.queryByText(`${paragraphText}...`);
 
-    // const date = screen.queryByText(new RegExp(dateTransformation, 'i'));
-    console.log(dateTransformation);
     expect(title).toBeInTheDocument();
     expect(paragraph).toBeInTheDocument();
-    // expect(date).toBeInTheDocument();
   });
 
   test('Should execute the function when I add it in the property onClick', async () => {

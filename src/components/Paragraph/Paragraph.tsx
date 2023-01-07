@@ -18,7 +18,8 @@ const Paragraph: FC<IParagraph> = ({ textPragraph, onBlur }) => {
       onBlur(textDefault);
       return;
     }
-    onBlur(contenido as string);
+
+    onBlur(html as string);
     setNoteContent(html as string);
   };
 
@@ -31,9 +32,6 @@ const Paragraph: FC<IParagraph> = ({ textPragraph, onBlur }) => {
   useEffect(() => {
     if (noteContent !== textDefault) {
       setColorText(false);
-      console.log(colorText);
-    } else {
-      console.log(colorText);
     }
   }, []);
 

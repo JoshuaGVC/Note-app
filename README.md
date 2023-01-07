@@ -1,6 +1,6 @@
 # Note-app
 
-![noteapp](./src/assets/img_note-app.png)
+![noteapp](./src/assets/image_note-app.png)
 
 [link demo](https://joshuagvc.github.io/note-app)
 
