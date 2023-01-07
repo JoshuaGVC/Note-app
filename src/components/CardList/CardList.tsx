@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { ICardList } from './CardList.d';
 import Card, { ICard } from '../Card';
-import { satinizar } from '../../utils/Satinizar';
+import { satinizar } from '../../utils/satinizar';
 
 const CardList: FC<ICardList> = ({ items, actionNote }) => {
   return (

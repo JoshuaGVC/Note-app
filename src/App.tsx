@@ -28,7 +28,7 @@ const App = () => {
       paragraph:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo labore aliquam doloremque exercitationem necessitatibus voluptates ex quia porro iure eius sequi, consequuntur veniam, libero ullam vero iste. Vero, maiores',
       date: dateNow,
-      //  moment().format('dddd, Do of MMMM  YYYY, h:mm:ss a'),
+
       selected: true
     };
 
