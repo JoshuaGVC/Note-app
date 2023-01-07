@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { FC, useRef } from 'react';
+import { FC } from 'react';
 import type { ICard } from './Card.d';
 import { Card as CardStyled, Title, Paragraph, Date as Fecha } from './Card.styled';
 

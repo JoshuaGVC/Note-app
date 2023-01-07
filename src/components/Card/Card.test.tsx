@@ -2,16 +2,12 @@ import { describe, expect, test, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import Card from './Card';
 import userEvent from '@testing-library/user-event';
-import moment from 'moment';
 
 describe('<Card/> ', () => {
   test('should display the title, paragraph and date when you define the title paragraph and date property', () => {
     const titleText = 'Una nota simple';
     const paragraphText = 'Este es un parrafo bien extenso y no alcanzo a leerlo todo';
     const dateText = Date.now();
-    const dateTransformation = moment(new Date(dateText) as Date).format(
-      'dddd, Do of MMMM  YYYY, h:mm:ss a'
-    );
     render(
       <Card
         id="14sds15c62d"

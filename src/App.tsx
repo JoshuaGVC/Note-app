@@ -5,7 +5,6 @@ import Sidebar from './components/Sidebar';
 import { RigthColumn } from './components/RigthColumn';
 import { useEffect, useState } from 'react';
 import { ICardApp } from './App.d';
-import moment from 'moment';
 import { TAction } from './components/Card/Card.d';
 import RenderNote from './components/RenderNote';
 import { TType } from './components/RenderNote/RenderNote.d';
