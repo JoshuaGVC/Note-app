@@ -8,7 +8,6 @@ import { ICardApp } from './App.d';
 import { TAction } from './components/Card';
 import Note, { TType } from './components/Note';
 
-const dateNow = Date.now();
 const App = () => {
   const [cardsList, setCardsList] = useState<ICardApp[]>([]);
   const [cardFound, setCardFound] = useState<ICardApp>();
@@ -26,7 +25,7 @@ const App = () => {
       title: 'Una simple nota',
       paragraph:
         'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo labore aliquam doloremque exercitationem necessitatibus voluptates ex quia porro iure eius sequi, consequuntur veniam, libero ullam vero iste. Vero, maiores',
-      date: dateNow,
+      date: Date.now(),
 
       selected: true
     };
