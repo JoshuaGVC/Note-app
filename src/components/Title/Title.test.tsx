@@ -31,7 +31,7 @@ describe('<Title/>', () => {
 
   test('should change the textContent when you click outside the element', async () => {
     const handlerOnBlur = vi.fn();
-    render(<Title onBlur={handlerOnBlur}>"a"</Title>);
+    render(<Title onBlur={handlerOnBlur}>a</Title>);
     const title = screen.queryByText('a');
     await userEvent.click(title as Element);
     await userEvent.keyboard('{backspace}');
@@ -42,7 +42,7 @@ describe('<Title/>', () => {
 
   test('should cleaning the content when the text is equal the default text', async () => {
     const handlerOnBlur = vi.fn();
-    render(<Title onBlur={handlerOnBlur}>"Una simple nota"</Title>);
+    render(<Title onBlur={handlerOnBlur}>Una simple nota</Title>);
     const title = screen.queryByText('Una simple nota');
     await userEvent.click(title as Element);
     expect(title?.textContent).toEqual('');
