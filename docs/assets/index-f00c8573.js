@@ -133,30 +133,30 @@ O.version="2.29.4";jv(ce);O.fn=k;O.min=Og;O.max=Pg;O.now=Tg;O.utc=Qt;O.unix=iS;O
   color: #aaaaaa;
   text-align: right;
   margin-top: auto;
-`,VS=({id:e,title:t,paragraph:n,date:r,selected:i,onClick:l})=>Si(jS,{selected:i,onClick:()=>{l(e,"seleccionar")},onDoubleClick:()=>{l(e,"borrar")},children:[Ae(om,{children:t}),Si(US,{as:"p",children:[n.substring(55,0),"..."]}),Ae(HS,{children:O(new Date(r)).format("dddd, Do of MMMM  YYYY, h:mm:ss a")})]}),BS=({items:e,actionNote:t})=>Ae("ul",{children:e.map(({title:n,paragraph:r,date:i,selected:l,id:o},s)=>Ae(VS,{id:o,title:n,paragraph:r,date:i,selected:l,onClick:t},`item-${s}`))}),GS=Gt.div`
+`,VS=({id:e,title:t,paragraph:n,date:r,selected:i,onClick:l})=>Si(jS,{selected:i,onClick:()=>{l(e,"seleccionar")},onDoubleClick:()=>{l(e,"borrar")},children:[Ae(om,{children:t}),Si(US,{as:"p",children:[n.substring(55,0),"..."]}),Ae(HS,{children:O(new Date(r)).format("dddd, Do of MMMM  YYYY, h:mm:ss a")})]}),BS=e=>{const t=document.createElement("div");return t.innerHTML=e,t.textContent},GS=({items:e,actionNote:t})=>Ae("ul",{children:e.map(({title:n,paragraph:r,date:i,selected:l,id:o},s)=>Ae(VS,{id:o,title:n,paragraph:BS(r),date:i,selected:l,onClick:t},`item-${s}`))}),QS=Gt.div`
     display:flex;
-`,QS=({children:e})=>Ae(GS,{children:e}),ZS=Gt.div`
+`,ZS=({children:e})=>Ae(QS,{children:e}),KS=Gt.div`
     padding: 18px 20px;
     width: 330px;
     border-right: 2px solid #DDDDDD;
     min-height: 100vh;
     flex-shrink: 0;
-`,KS=({children:e})=>Ae(ZS,{children:e}),XS=Gt.div`
+`,XS=({children:e})=>Ae(KS,{children:e}),JS=Gt.div`
   padding: 19px 42px;
   display: block;
   width: 100vw;
-`,JS=({children:e})=>Ae(XS,{children:e}),qS=Gt.div`
-  font-family: "Open Sans";
+`,qS=({children:e})=>Ae(JS,{children:e}),bS=Gt.div`
+  font-family: 'Open Sans';
   font-weight: 400;
   font-size: 20px;
   line-height: 27px;
   color: ${e=>e.defaulTextColor?"#d7d7d7":"#000"};
   outline: 0;
-`,bS=({textPragraph:e,onBlur:t})=>{const n="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo labore aliquam doloremque exercitationem necessitatibus voluptates ex quia porro iure eius sequi, consequuntur veniam, libero ullam vero iste. Vero, maiores",[r,i]=xe.useState(e),[l,o]=xe.useState(!0),s=u=>{const h=u.target.innerHTML,p=u.target.textContent;if(p===""){o(!0),i(n),t(n);return}t(p),i(h)},a=()=>{r===n&&i("")};return xe.useEffect(()=>{r!==n&&o(!1),console.log(l)},[]),xe.useEffect(()=>{o(e===n),i(e)},[e]),Ae(qS,{defaulTextColor:l,onInput:()=>o(!1),onFocus:a,onBlur:s,dangerouslySetInnerHTML:{__html:r},suppressContentEditableWarning:!0,contentEditable:!0})},e_=Gt.h1`
-    font-family: 'Open Sans';
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 54px;
-    margin-bottom: 32px;
-    color: ${e=>e.defalutText?"#d7d7d7":"#000"};
-`,t_=({textTitle:e,onBlur:t})=>{const n="Una simple nota",[r,i]=xe.useState(e),[l,o]=xe.useState(!0),s=u=>{const h=u.target.textContent;if(n!==h&&o(!1),!h){o(!0),i(n),t(n);return}t(h),i(h)},a=()=>{r===n&&i("")};return xe.useEffect(()=>{i(e),o(n===e)},[e]),Ae(e_,{defalutText:l,onInput:()=>o(!1),onFocus:a,onBlur:s,suppressContentEditableWarning:!0,contentEditable:!0,children:r})},n_=({title:e,paragraph:t,onBlur:n})=>Si(Rm,{children:[Ae(t_,{textTitle:e,onBlur:l=>{n(l,"title")}}),Ae(bS,{textPragraph:t,onBlur:l=>{n(l,"paragraph")}})]}),r_=Date.now(),i_=()=>{const[e,t]=xe.useState([]),[n,r]=xe.useState(),i=()=>{const w=e.map(S=>({...S,selected:!1})),v={id:crypto.randomUUID(),title:"Una simple nota",paragraph:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo labore aliquam doloremque exercitationem necessitatibus voluptates ex quia porro iure eius sequi, consequuntur veniam, libero ullam vero iste. Vero, maiores",date:r_,selected:!0};t([v,...w])},l=w=>w.sort((S,D)=>D.date-S.date),o=w=>{if(confirm("¿Seguro que quieres borrar esta nota?")){const D=[...e].filter(f=>f.id!==w);t(l(D))}},s=w=>{const v=JSON.stringify(w);localStorage.setItem("notes",v)},a=()=>{const w=e.find(v=>v.selected);r(w)},u=w=>{const v=e.map(S=>({...S,selected:S.id===w}));t(l(v))},h=(w,v)=>{v==="seleccionar"&&u(w),v==="borrar"&&o(w)},p=(w,v)=>{const S=n,D={...S,[v]:w[v],date:Date.now()},f=S.id,c=e.findIndex(g=>g.id===f),d=[...e];d.splice(c,1,D),t(l(d))},m=(w,v)=>{const S=n;if(v==="title"){const D={...S,title:w};w!==(n==null?void 0:n.title)&&p(D,v)}if(v==="paragraph"){const D={...S,paragraph:w};w!==(n==null?void 0:n.paragraph)&&p(D,v)}};return xe.useEffect(()=>{let w=localStorage.getItem("notes");w!==null&&t(JSON.parse(w))},[]),xe.useEffect(()=>{s(e),a()},[e]),Si(QS,{children:[Si(KS,{children:[Ae(Wv,{onClick:i}),Ae(BS,{actionNote:h,items:e})]}),Ae(JS,{children:!!n&&Ae(n_,{title:n.title,paragraph:n.paragraph,id:n.id,onBlur:m})})]})};Gs.createRoot(document.getElementById("root")).render(Ae(i_,{}))});export default l_();
+`,e_=({children:e,onBlur:t})=>{const n="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo labore aliquam doloremque exercitationem necessitatibus voluptates ex quia porro iure eius sequi, consequuntur veniam, libero ullam vero iste. Vero, maiores",[r,i]=xe.useState(e),[l,o]=xe.useState(!0),s=u=>{const h=u.target.innerHTML;if(u.target.textContent===""){o(!0),i(n),t(n);return}t(h),i(h)},a=()=>{r===n&&i("")};return xe.useEffect(()=>{r!==n&&o(!1)},[]),xe.useEffect(()=>{o(e===n),i(e)},[e]),Ae(bS,{defaulTextColor:l,onInput:()=>o(!1),onFocus:a,onBlur:s,dangerouslySetInnerHTML:{__html:r},suppressContentEditableWarning:!0,contentEditable:!0})},t_=Gt.h1`
+  font-family: 'Open Sans';
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 54px;
+  margin-bottom: 32px;
+  color: ${e=>e.defalutText?"#d7d7d7":"#000"};
+`,n_=({children:e,onBlur:t})=>{const n="Una simple nota",[r,i]=xe.useState(e),[l,o]=xe.useState(!0),s=u=>{const h=u.target.textContent;if(n!==h&&o(!1),!h){o(!0),i(n),t(n);return}t(h),i(h)},a=()=>{r===n&&i("")};return xe.useEffect(()=>{i(e),o(n===e)},[e]),Ae(t_,{defalutText:l,onInput:()=>o(!1),onFocus:a,onBlur:s,suppressContentEditableWarning:!0,contentEditable:!0,children:r})},r_=({title:e,paragraph:t,onBlur:n})=>Si(Rm,{children:[Ae(n_,{onBlur:l=>{n(l,"title")},children:e}),Ae(e_,{onBlur:l=>{n(l,"paragraph")},children:t})]}),i_=()=>{const[e,t]=xe.useState([]),[n,r]=xe.useState(),i=()=>{const w=e.map(S=>({...S,selected:!1})),v={id:crypto.randomUUID(),title:"Una simple nota",paragraph:"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed nemo labore aliquam doloremque exercitationem necessitatibus voluptates ex quia porro iure eius sequi, consequuntur veniam, libero ullam vero iste. Vero, maiores",date:Date.now(),selected:!0};t([v,...w])},l=w=>w.sort((S,D)=>D.date-S.date),o=w=>{if(confirm("¿Seguro que quieres borrar esta nota?")){const D=[...e].filter(f=>f.id!==w);t(l(D))}},s=w=>{const v=JSON.stringify(w);localStorage.setItem("notes",v)},a=()=>{const w=e.find(v=>v.selected);r(w)},u=w=>{const v=e.map(S=>({...S,selected:S.id===w}));t(l(v))},h=(w,v)=>{v==="seleccionar"&&u(w),v==="borrar"&&o(w)},p=(w,v)=>{const S=n,D={...S,[v]:w[v],date:Date.now()},f=S.id,c=e.findIndex(g=>g.id===f),d=[...e];d.splice(c,1,D),t(l(d))},m=(w,v)=>{const S=n;if(v==="title"){const D={...S,title:w};w!==(n==null?void 0:n.title)&&p(D,v)}if(v==="paragraph"){const D={...S,paragraph:w};w!==(n==null?void 0:n.paragraph)&&p(D,v)}};return xe.useEffect(()=>{let w=localStorage.getItem("notes");w!==null&&t(JSON.parse(w))},[]),xe.useEffect(()=>{s(e),a()},[e]),Si(ZS,{children:[Si(XS,{children:[Ae(Wv,{onClick:i}),Ae(GS,{actionNote:h,items:e})]}),Ae(qS,{children:!!n&&Ae(r_,{title:n.title,paragraph:n.paragraph,id:n.id,onBlur:m})})]})};Gs.createRoot(document.getElementById("root")).render(Ae(i_,{}))});export default l_();
