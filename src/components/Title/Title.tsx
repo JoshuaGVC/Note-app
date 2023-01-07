@@ -2,9 +2,9 @@ import { FC, FormEvent, useEffect, useState } from 'react';
 import { ITitle } from './Title.d';
 import { Title as TitleStyled } from './Title.styled';
 
-const Title: FC<ITitle> = ({ textTitle, onBlur }) => {
+const Title: FC<ITitle> = ({ children, onBlur }) => {
   const defaultText = 'Una simple nota';
-  const [content, setContent] = useState(textTitle);
+  const [content, setContent] = useState(children);
   const [textColor, setTextColor] = useState(true);
 
   const handlerOnBlur = (event: FormEvent<HTMLHeadingElement>) => {
@@ -30,9 +30,9 @@ const Title: FC<ITitle> = ({ textTitle, onBlur }) => {
   };
 
   useEffect(() => {
-    setContent(textTitle);
-    setTextColor(defaultText === textTitle);
-  }, [textTitle]);
+    setContent(children);
+    setTextColor(defaultText === children);
+  }, [children]);
 
   return (
     <TitleStyled

@@ -1,4 +1,5 @@
+import { ReactNode } from 'react';
 export interface IParagraph {
-  textPragraph: string;
+  children: ReactNode;
   onBlur: (data: string) => void;
 }

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Paragraph from '../Paragraph';
-import TitleEdit from '../Title';
+import Title from '../Title';
 import { INote } from './Note.d';
 
 const RenderNote: FC<INote> = ({ title, paragraph, onBlur }) => {
@@ -14,8 +14,8 @@ const RenderNote: FC<INote> = ({ title, paragraph, onBlur }) => {
 
   return (
     <>
-      <TitleEdit textTitle={title} onBlur={onBlurTitle} />
-      <Paragraph textPragraph={paragraph} onBlur={onBlurParagraph} />
+      <Title onBlur={onBlurTitle}>{title}</Title>
+      <Paragraph onBlur={onBlurParagraph}>{paragraph}</Paragraph>
     </>
   );
 };
