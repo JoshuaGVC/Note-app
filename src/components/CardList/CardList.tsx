@@ -11,7 +11,7 @@ const CardList: FC<ICardList> = ({ items, actionNote }) => {
           id={id}
           key={`item-${index}`}
           title={title}
-          paragraph={satinizar(paragraph) as string}
+          paragraph={satinizar(paragraph)}
           date={date}
           selected={selected}
           onClick={actionNote}

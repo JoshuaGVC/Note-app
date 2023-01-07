@@ -1,15 +1,15 @@
-import { FC } from "react";
-import Paragraph from "../Paragraph";
-import TitleEdit from "../TitleEdit";
-import { IRender } from "./RenderNote.d";
+import { FC } from 'react';
+import Paragraph from '../Paragraph';
+import TitleEdit from '../Title';
+import { INote } from './Note.d';
 
-const RenderNote: FC<IRender> = ({ title, paragraph, onBlur }) => {
+const RenderNote: FC<INote> = ({ title, paragraph, onBlur }) => {
   const onBlurTitle = (data: string) => {
-    onBlur(data, "title");
+    onBlur(data, 'title');
   };
 
   const onBlurParagraph = (data: string) => {
-    onBlur(data, "paragraph");
+    onBlur(data, 'paragraph');
   };
 
   return (

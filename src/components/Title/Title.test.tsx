@@ -1,7 +1,7 @@
 import { describe, expect, test, vi } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import TitleEdit from './TitleEdit';
+import TitleEdit from './Title';
 
 const titleText = 'texto ingresado';
 

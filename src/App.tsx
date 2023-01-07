@@ -5,9 +5,8 @@ import Sidebar from './components/Sidebar';
 import { RigthColumn } from './components/RigthColumn';
 import { useEffect, useState } from 'react';
 import { ICardApp } from './App.d';
-import { TAction } from './components/Card/Card.d';
-import RenderNote from './components/RenderNote';
-import { TType } from './components/RenderNote/RenderNote.d';
+import { TAction } from './components/Card';
+import Note, { TType } from './components/Note';
 
 const dateNow = Date.now();
 const App = () => {
@@ -129,7 +128,7 @@ const App = () => {
       </Sidebar>
       <RigthColumn>
         {!!cardFound && (
-          <RenderNote
+          <Note
             title={cardFound.title}
             paragraph={cardFound.paragraph}
             id={cardFound.id}

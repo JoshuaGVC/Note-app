@@ -1,8 +1,8 @@
 import { FC, FormEvent, useEffect, useState } from 'react';
 import { ITitle } from './Title.d';
-import { Title } from './Title.styled';
+import { Title as TitleStyled } from './Title.styled';
 
-const TitleEdit: FC<ITitle> = ({ textTitle, onBlur }) => {
+const Title: FC<ITitle> = ({ textTitle, onBlur }) => {
   const defaultText = 'Una simple nota';
   const [content, setContent] = useState(textTitle);
   const [textColor, setTextColor] = useState(true);
@@ -35,7 +35,7 @@ const TitleEdit: FC<ITitle> = ({ textTitle, onBlur }) => {
   }, [textTitle]);
 
   return (
-    <Title
+    <TitleStyled
       defalutText={textColor}
       onInput={() => setTextColor(false)}
       onFocus={handlerOnFocus}
@@ -44,8 +44,8 @@ const TitleEdit: FC<ITitle> = ({ textTitle, onBlur }) => {
       contentEditable
     >
       {content}
-    </Title>
+    </TitleStyled>
   );
 };
 
-export default TitleEdit;
+export default Title;

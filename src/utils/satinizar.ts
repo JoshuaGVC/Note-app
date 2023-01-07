@@ -1,5 +1,5 @@
-export const satinizar = (html: string) => {
+export const satinizar = (html: string): string => {
   const wrapperText = document.createElement('div');
   wrapperText.innerHTML = html;
-  return wrapperText.textContent;
+  return wrapperText.textContent as string;
 };
